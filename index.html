@@ -715,7 +715,7 @@ video {
         <div class="player-volume">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9v6h4l5 4V5L7 9H3zm13.5 3a4.5 4.5 0 0 0-2.5-4.03v8.05A4.5 4.5 0 0 0 16.5 12zM14 3.23v2.06a7 7 0 0 1 0 13.42v2.06a9 9 0 0 0 0-17.54z"/></svg>
 
-            <input class="music-volume" id="musicVolume" type="range" min="0" max="100" step="1" value="35" aria-label="Music volume" title="Volume">
+            <input class="music-volume" id="musicVolume" type="range" min="0" max="100" step="1" value="50" aria-label="Music volume" title="Volume">
         </div>
     </div>
 
@@ -748,10 +748,11 @@ const playerTrackState = document.getElementById("playerTrackState");
 
 const playIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>';
 const pauseIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg>';
+const MAX_MUSIC_VOLUME = 0.6;
 
 let hasEntered = false;
 
-backgroundMusic.volume = 0.35;
+backgroundMusic.volume = 0.3;
 backgroundMusic.loop = true;
 
 function updateMusicButton() {
@@ -774,7 +775,7 @@ function formatMusicTime(seconds) {
 function updateMusicVolume() {
     const volume = Number(musicVolume.value);
 
-    backgroundMusic.volume = volume / 100;
+    backgroundMusic.volume = volume / 100 * MAX_MUSIC_VOLUME;
     musicVolume.style.setProperty("--volume-fill", volume + "%");
 }
 
