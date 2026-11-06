@@ -458,6 +458,15 @@ video {
     box-shadow: 0 0 30px #b845c822;
     text-align: center;
     transition: 0.3s ease;
+	display: block;
+	text-decoration: none;
+	color: inherit;
+	cursor: pointer;
+}
+
+.script-card:focus-visible {
+    outline: 2px solid #f5b6ff;
+    outline-offset: 5px;
 }
 
 .script-card:hover {
@@ -670,16 +679,21 @@ video {
             </div>
         </div>
 
-        <div class="script-card">
+        <a
+            class="script-card"
+            href="https://example.com"
+            aria-label="Open script website"
+        >
             <div class="script-image">
                 <img
                     src="https://github.com/iavitadumitru56-ai/Persistence.github.io/raw/refs/heads/main/menu.png"
-                    alt="Script Menu">
+                    alt="Script Menu"
+                >
             </div>
-
+        
             <div class="script-title">SCRIPT MENU</div>
-            <div class="script-subtitle">A little preview</div>
-        </div>
+            <div class="script-subtitle">Click to open</div>
+        </a>
     </div>
 
     <div class="hint">click the chandelier</div>
