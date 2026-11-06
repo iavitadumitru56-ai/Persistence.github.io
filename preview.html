@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>mmadunna</title>
+
+<link rel="icon" type="image/jpeg"
+href="https://github.com/iavitadumitru56-ai/Persistence.github.io/blob/main/LOGO.jpg?raw=true">
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+
+    background:
+        radial-gradient(ellipse at 50% 45%, #49334e 0%, transparent 65%),
+        linear-gradient(145deg, #17121c, #241927 55%, #130f18);
+
+    font-family: "Trebuchet MS", sans-serif;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+
+    background: radial-gradient(
+        circle at 50% 45%,
+        rgba(245, 182, 255, 0.09),
+        transparent 65%
+    );
+}
+
+.video-wrapper {
+    width: min(718px, 90vw, 90vh);
+    aspect-ratio: 718 / 718;
+    padding: 7px;
+
+    position: relative;
+    z-index: 1;
+
+    border-radius: 20px;
+
+    background: linear-gradient(
+        135deg,
+        #c5adda,
+        #f5b6ff,
+        #b845c8,
+        #5c4f67
+    );
+
+    box-shadow:
+        0 0 25px #b845c833,
+        0 0 80px #b845c822;
+
+    transition:
+        transform .4s ease,
+        box-shadow .4s ease;
+}
+
+.video-wrapper:hover {
+    transform: scale(1.015);
+
+    box-shadow:
+        0 0 35px #b845c855,
+        0 0 100px #b845c833;
+}
+
+.video-inner {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 14px;
+    background: #17121c;
+}
+
+.video-title {
+    position: absolute;
+    bottom: calc(50% + min(45vw, 45vh, 359px) + 25px);
+    left: 50%;
+    transform: translateX(-50%);
+
+    color: #f5b6ff;
+    font-family: "Trebuchet MS", sans-serif;
+    font-size: 28px;
+    font-weight: bold;
+    letter-spacing: 5px;
+
+    text-shadow:
+        0 0 10px #b845c8,
+        0 0 25px #b845c855;
+}
+
+video {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background: #17121c;
+}
+
+@media(max-width: 600px) {
+    .video-wrapper {
+        width: 92vw;
+        border-radius: 15px;
+        padding: 5px;
+    }
+
+    .video-inner {
+        border-radius: 11px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="video-title">Get lost, there’s nothing here</div>
+
+<div class="video-wrapper">
+    <div class="video-inner">
+        <video autoplay muted loop playsinline>
+            <source
+                src="https://github.com/iavitadumitru56-ai/Persistence.github.io/raw/refs/heads/main/ZLOI.MP4"
+                type="video/mp4">
+        </video>
+    </div>
+</div>
+
+</body>
+</html>
