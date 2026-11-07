@@ -1,15 +1,14 @@
 export default function handler(req, res) {
-    const userAgent = req.headers["user-agent"] || "";
+    const ua = req.headers["user-agent"] || "";
     const accept = req.headers["accept"] || "";
 
-    const isBrowser =
-        accept.includes("text/html") &&
-        !/Roblox|HttpClient|curl|python|wget/i.test(userAgent);
+    const browser = accept.includes("text/html") &&
+        !/Roblox|HttpClient|curl|python|wget/i.test(ua);
 
-    if (isBrowser) {
-        return res.sendFile("index.html");
+    if (browser) {
+        return res.redirect(307, "/index.html");
     }
 
     res.setHeader("Content-Type", "text/plain; charset=utf-8");
-    return res.send('print("CUCUMBER")');
+    res.send('print("CUCUMBER")');
 }
