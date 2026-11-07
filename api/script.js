@@ -1,37 +1,34 @@
-const http = require("http");
+module.exports = async (req, res) => {
+    const h = req.headers || {};
+    const accept = h.accept || "";
 
-const REDIRECT_URL = "https://persistence-phi.vercel.app";
+    const isBrowser =
+        h["sec-fetch-mode"] === "navigate" ||
+        h["sec-fetch-dest"] === "document" ||
+        accept.includes("text/html");
 
-const html = `<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <title>Persistence</title>
-</head>
-<body>
-    <h1>Persistence</h1>
-</body>
-</html>`;
+    const origin = "https://persistence-phi.vercel.app";
+    const target = isBrowser
+        ? `${origin}/index.html`
+        : `${origin}/payload.lua`;
 
-http.createServer((req, res) => {
-    const path = new URL(req.url, "http://localhost").pathname;
+    try {
+        const response = await fetch(target, { cache: "no-store" });
 
-    if (path === "/" || path === "/page.html") {
-        res.writeHead(200, {
-            "Content-Type": "text/html; charset=utf-8"
-        });
-        return res.end(html);
+        if (!response.ok) {
+            return res.status(502).send("Source file not found");
+        }
+
+        res.setHeader("Cache-Control", "no-store");
+        res.setHeader(
+            "Content-Type",
+            isBrowser
+                ? "text/html; charset=utf-8"
+                : "text/plain; charset=utf-8"
+        );
+
+        return res.status(200).send(await response.text());
+    } catch {
+        return res.status(502).send("Request failed");
     }
-
-    if (path === "/redirect.html") {
-        res.writeHead(302, {
-            Location: REDIRECT_URL,
-            "Cache-Control": "no-store"
-        });
-        return res.end();
-    }
-
-    res.writeHead(404);
-    res.end("Not Found");
-
-}).listen(process.env.PORT || 3000);
+};
