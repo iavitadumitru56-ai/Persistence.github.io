@@ -1,6 +1,6 @@
 const http = require("http");
 
-const REDIRECT_URL = "https://persistence-phi.vercel.app/yahuisosiebanatsukoeblantupoisosimoihui.lua";
+const REDIRECT_URL = "https://persistence-phi.vercel.app";
 
 const html = `<!DOCTYPE html>
 <html lang="ru">
