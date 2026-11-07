@@ -1,4 +1,4 @@
-export default function handler(req, res) {
+module.exports = (req, res) => {
     const ua = req.headers["user-agent"] || "";
     const accept = req.headers["accept"] || "";
 
@@ -10,5 +10,7 @@ export default function handler(req, res) {
     }
 
     res.setHeader("Content-Type", "text/plain; charset=utf-8");
-    res.send('print("CUCUMBER")');
-}
+    res.setHeader("Cache-Control", "no-store");
+
+    return res.send('print("CUCUMBER")');
+};
