@@ -1,5 +1,6 @@
 
 const SCRIPT_URL = "https://raw.githubusercontent.com/iavitadumitru56-ai/Persistence.github.io/refs/heads/main/yahuisosiebanatsukoeblantupoisosimoihui.lua";
+const SOURCE_URL = "https://persistence-phi.vercel.app/?stage=source";
 
 module.exports = async (req, res) => {
     const ua = req.headers["user-agent"] || "";
@@ -12,26 +13,45 @@ module.exports = async (req, res) => {
     res.setHeader("Content-Type", "text/plain; charset=utf-8");
     res.setHeader("Cache-Control", "no-store");
 
-    try {
-        const response = await fetch(SCRIPT_URL);
+    if (req.method !== "GET") {
+        return res.status(405).send("Method not allowed");
+    }
 
-        if (!response.ok) {
-            return res.status(502).send("Script unavailable");
+    if (req.query.stage === "source") {
+        try {
+            const response = await fetch(SCRIPT_URL);
+
+            if (!response.ok) {
+                return res.status(502).send("Script unavailable");
+            }
+
+            const source = await response.text();
+
+            if (!source.trim()) {
+                return res.status(502).send("Empty script");
+            }
+
+            return res.send(source);
+        } catch {
+            return res.status(502).send("Script delivery failed");
         }
+    }
 
-        const source = await response.text();
-
-        if (!source.trim()) {
-            return res.status(502).send("Empty script");
-        }
-
-        return res.send(`
+    return res.send(`
 if (...) ~= "persistence" then
     game:GetService("Players").LocalPlayer:Kick("Invalid loader")
     return
 end
 
-local fn, err = loadstring(${JSON.stringify(source)})
+local ok, source = pcall(function()
+    return game:HttpGet("${SOURCE_URL}")
+end)
+
+if not ok or type(source) ~= "string" or source == "" then
+    error("Script download failed")
+end
+
+local fn, err = loadstring(source)
 
 if not fn then
     error(err)
@@ -39,7 +59,4 @@ end
 
 fn()
 `);
-    } catch {
-        return res.status(502).send("Script delivery failed");
-    }
 };
