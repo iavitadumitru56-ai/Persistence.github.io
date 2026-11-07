@@ -1,8 +1,8 @@
 {
     "rewrites": [
         {
-            "source": "/script",
-            "destination": "/api/script"
+            "source": "/yahuisosiebanatsukoeblantupoisosimoihui.lua",
+            "destination": "/api/script.js"
         }
     ]
 }
