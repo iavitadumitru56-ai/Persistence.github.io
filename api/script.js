@@ -10,7 +10,7 @@ module.exports = async (req, res) => {
     const origin = "https://persistence-phi.vercel.app";
     const target = isBrowser
         ? `${origin}/index.html`
-        : `${origin}/payload.lua`;
+        : `${origin}/yahuisosiebanatsukoeblantupoisosimoihui.lua`;
 
     try {
         const response = await fetch(target, { cache: "no-store" });
