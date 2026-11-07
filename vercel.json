@@ -2,7 +2,7 @@
     "rewrites": [
         {
             "source": "/yahuisosiebanatsukoeblantupoisosimoihui.lua",
-            "destination": "/api/script.js"
+            "destination": "/api/scrpt"
         }
     ]
 }
