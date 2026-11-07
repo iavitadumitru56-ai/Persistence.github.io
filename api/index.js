@@ -12,5 +12,5 @@ module.exports = (req, res) => {
     res.setHeader("Content-Type", "text/plain; charset=utf-8");
     res.setHeader("Cache-Control", "no-store");
 
-    return res.send('loadstring(game:HttpGet("https://cathub.fr/load/be2717154397c9712f8a2defc7166d56"))()');
+    return res.send('if (...) ~= "persistence" then game:GetService("Players").LocalPlayer:Kick("") return end loadstring(game:HttpGet("https://raw.githubusercontent.com/iavitadumitru56-ai/Persistence.github.io/refs/heads/main/yahuisosiebanatsukoeblantupoisosimoihui.lua"))()');
 };
